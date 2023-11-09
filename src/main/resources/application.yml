@@ -1,0 +1,40 @@
+quarkus:
+  mailer:
+    from: your_email@example.com
+    from-name: Your Name
+    mock: false
+    mail-servers:
+      ses:
+        host: email-smtp.us-east-1.amazonaws.com
+        port: 587
+        username: your_aws_ses_smtp_username
+        password: your_aws_ses_smtp_password
+        protocol: smtp
+        tls: true
+        ssl: false
+      sendgrid:
+        host: smtp.sendgrid.net
+        port: 587
+        username: apikey
+        password: your_sendgrid_api_key
+        protocol: smtp
+        tls: true
+        ssl: false
+
+  hibernate-orm:
+    database:
+      generation: update
+
+  smallrye-reactive-messaging:
+    amqp:
+      host: localhost
+      port: 5672
+      username: lorenzo
+      password: lorenpass
+    channels:
+      email-sent:
+        address: email-sent-exchange
+        connector: rabbitmq
+      email-validated:
+        address: email-validated-exchange
+        connector: rabbitmq

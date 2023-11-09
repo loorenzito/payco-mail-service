@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    environment:
+      - RABBITMQ_DEFAULT_USER=lorenzo
+      - RABBITMQ_DEFAULT_PASS=lorenpass
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_DB=appdb
+      - POSTGRES_USER=lorenzo
+      - POSTGRES_PASSWORD=lorenpass
+    ports:
+      - "5432:5432"
